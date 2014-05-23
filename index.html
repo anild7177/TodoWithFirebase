@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="TodoApp" data-framework="firebase">
+<head>
+    <title>Angular and Firebase Todo</title>
+    <link rel="stylesheet" href="bower_components/todomvc-common/base.css">
+</head>
+<body>
+
+    <section id="todo-app" ng-controller="todoController">
+        <header>
+            <h1>todos</h1>
+            <form id="todo-form" ng-submit="addTodo()">
+                <input id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+            </form>
+        </header>
+        <section id="main">
+            <ul id="todo-list">
+                <li ng-repeat="todo in todos">
+                    <div class="view">
+                        <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="todos.$save(id)">
+                        <lable>{{todo.title}}</lable>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </section>
+
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <!--<script src="bower_components/todomvc-common/base.js"></script>-->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angularfire/angularfire.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/todoController.js"></script>
+</body>
+</html>
